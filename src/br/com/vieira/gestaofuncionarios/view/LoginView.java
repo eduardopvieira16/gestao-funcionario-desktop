@@ -4,7 +4,6 @@
  */
 package br.com.vieira.gestaofuncionarios.view;
 
-import br.com.vieira.gestaofuncionarios.controller.LoginController;
 import javax.swing.JOptionPane;
 
 /**
@@ -13,14 +12,11 @@ import javax.swing.JOptionPane;
  */
 public class LoginView extends javax.swing.JFrame {
 
-    private final LoginController controller;
-
     /**
      * Creates new form LoginView
      */
     public LoginView() {
         initComponents();
-        this.controller = new LoginController(this);
     }
 
     /**
@@ -79,12 +75,7 @@ public class LoginView extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEntrarActionPerformed
-        if (controller.autenticar(txtEmail.getText(), new String(txtSenha.getPassword()))) {
-            this.dispose();
-            new ListaFuncionarios().setVisible(true);
-        } else {
-            JOptionPane.showMessageDialog(this, "Login inválido!");
-        }
+
     }//GEN-LAST:event_btnEntrarActionPerformed
 
     /**

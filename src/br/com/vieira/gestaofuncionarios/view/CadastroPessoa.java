@@ -10,7 +10,6 @@ package br.com.vieira.gestaofuncionarios.view;
  */
 public class CadastroPessoa extends javax.swing.JFrame {
     
-    private final PessoaController controller;
 
     /**
      * Creates new form CadastroPessoa

@@ -4,25 +4,17 @@
  */
 package br.com.vieira.gestaofuncionarios.view;
 
-import br.com.vieira.gestaofuncionarios.controller.FuncionarioController;
-import java.sql.SQLException;
-import javax.swing.table.DefaultTableModel;
-
 /**
  *
  * @author Eduardo
  */
 public class ListaFuncionarios extends javax.swing.JFrame {
 
-    private final FuncionarioController controller;
-
     /**
      * Creates new form ListaFuncionarios
      */
     public ListaFuncionarios() {
         initComponents();
-        this.controller = new FuncionarioController(this);
-        carregarFuncionarios();
     }
 
     /**
@@ -98,17 +90,8 @@ public class ListaFuncionarios extends javax.swing.JFrame {
     private void btnCadastrarFuncionarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarFuncionarioActionPerformed
         new CadastroFuncionario().setVisible(true);
     }//GEN-LAST:event_btnCadastrarFuncionarioActionPerformed
-    private void carregarFuncionarios() throws SQLException {
-        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
-        model.setRowCount(0);
-        controller.carregarFuncionarios().forEach(func -> {
-            model.addRow(new Object[]{
-                func.getId(),
-                func.getNome(),
-                func.getDataAdmissao(),
-                func.getSalario()
-            });
-        });
+    private void carregarFuncionarios() {
+
     }
 
     /**
