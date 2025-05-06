@@ -4,9 +4,9 @@
  */
 package br.com.vieira.gestaofuncionarios.view;
 
+import br.com.vieira.gestaofuncionarios.controller.FuncionarioController;
 import br.com.vieira.gestaofuncionarios.controller.UsuarioController;
 import javax.swing.JOptionPane;
-import javax.swing.JTextField;
 
 /**
  *
@@ -18,11 +18,17 @@ public class LoginView extends javax.swing.JFrame {
 
     /**
      * Creates new form LoginView
+     *
+     * @param usuarioController
      */
     public LoginView(UsuarioController usuarioController) {
         this.usuarioController = usuarioController;
         initComponents();
         setLocationRelativeTo(null);
+    }
+
+    private LoginView() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     /**
@@ -82,8 +88,22 @@ public class LoginView extends javax.swing.JFrame {
 
     private void btnEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEntrarActionPerformed
 
-        String email = txtEmail.getText();
-        String senha = new String(txtSenha.getPassword());
+        try {
+            String email = txtEmail.getText().trim();
+            String senha = new String(txtSenha.getPassword());
+
+            if (usuarioController.realizarLogin(email, senha)) {
+                new ListaFuncionarios(
+                        new FuncionarioController(),
+                        usuarioController
+                ).setVisible(true);
+                this.dispose();
+            } else {
+                JOptionPane.showMessageDialog(this, "Credenciais inválidas");
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Erro: " + e.getMessage());
+        }
     }//GEN-LAST:event_btnEntrarActionPerformed
 
     /**
