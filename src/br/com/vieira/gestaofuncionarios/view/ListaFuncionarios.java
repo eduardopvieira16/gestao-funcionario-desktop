@@ -6,6 +6,8 @@ package br.com.vieira.gestaofuncionarios.view;
 
 import br.com.vieira.gestaofuncionarios.controller.FuncionarioController;
 import br.com.vieira.gestaofuncionarios.controller.UsuarioController;
+import java.sql.SQLException;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -25,6 +27,10 @@ public class ListaFuncionarios extends javax.swing.JFrame {
         this.usuarioController = usuarioController;
         initComponents();
         setLocationRelativeTo(null);
+    }
+
+    private ListaFuncionarios() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     /**
@@ -100,8 +106,18 @@ public class ListaFuncionarios extends javax.swing.JFrame {
     private void btnCadastrarFuncionarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarFuncionarioActionPerformed
         new CadastroFuncionario(funcionarioController).setVisible(true);
     }//GEN-LAST:event_btnCadastrarFuncionarioActionPerformed
-    private void carregarFuncionarios() {
+    private void carregarFuncionarios() throws SQLException {
+        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+        model.setRowCount(0);
 
+        funcionarioController.listarFuncionarios().forEach(func -> {
+            model.addRow(new Object[]{
+                func.getId(),
+                func.getNome(),
+                func.getDataAdmissao(),
+                func.getSalario()
+            });
+        });
     }
 
     /**
