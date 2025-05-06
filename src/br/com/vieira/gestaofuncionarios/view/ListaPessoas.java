@@ -4,17 +4,26 @@
  */
 package br.com.vieira.gestaofuncionarios.view;
 
+import br.com.vieira.gestaofuncionarios.controller.FuncionarioController;
+import br.com.vieira.gestaofuncionarios.controller.UsuarioController;
+
 /**
  *
  * @author Eduardo
  */
 public class ListaPessoas extends javax.swing.JFrame {
 
+    private UsuarioController usuarioContoller;
+    private FuncionarioController funcionarioController;
+
     /**
      * Creates new form ListaFuncionarios
      */
-    public ListaPessoas() {
+    public ListaPessoas(UsuarioController usuarioController, FuncionarioController funcionarioController) {
+        this.usuarioContoller = usuarioController;
+        this.funcionarioController = funcionarioController;
         initComponents();
+        setLocationRelativeTo(null);
     }
 
     /**
@@ -86,7 +95,7 @@ public class ListaPessoas extends javax.swing.JFrame {
     }//GEN-LAST:event_btnListarFuncionarioActionPerformed
 
     private void btnCadastrarFuncionarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarFuncionarioActionPerformed
-        // TODO add your handling code here:
+        new CadastroFuncionario(funcionarioController).setVisible(true);
     }//GEN-LAST:event_btnCadastrarFuncionarioActionPerformed
 
     /**

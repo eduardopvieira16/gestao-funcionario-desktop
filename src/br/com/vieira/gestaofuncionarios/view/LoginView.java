@@ -4,7 +4,9 @@
  */
 package br.com.vieira.gestaofuncionarios.view;
 
+import br.com.vieira.gestaofuncionarios.controller.UsuarioController;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 
 /**
  *
@@ -12,11 +14,15 @@ import javax.swing.JOptionPane;
  */
 public class LoginView extends javax.swing.JFrame {
 
+    private UsuarioController usuarioController;
+
     /**
      * Creates new form LoginView
      */
-    public LoginView() {
+    public LoginView(UsuarioController usuarioController) {
+        this.usuarioController = usuarioController;
         initComponents();
+        setLocationRelativeTo(null);
     }
 
     /**
@@ -76,6 +82,8 @@ public class LoginView extends javax.swing.JFrame {
 
     private void btnEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEntrarActionPerformed
 
+        String email = txtEmail.getText();
+        String senha = new String(txtSenha.getPassword());
     }//GEN-LAST:event_btnEntrarActionPerformed
 
     /**
@@ -92,16 +100,24 @@ public class LoginView extends javax.swing.JFrame {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
+
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(LoginView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LoginView.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(LoginView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LoginView.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(LoginView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LoginView.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(LoginView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LoginView.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 

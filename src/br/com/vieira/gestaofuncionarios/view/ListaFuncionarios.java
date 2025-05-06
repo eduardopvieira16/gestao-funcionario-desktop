@@ -4,17 +4,27 @@
  */
 package br.com.vieira.gestaofuncionarios.view;
 
+import br.com.vieira.gestaofuncionarios.controller.FuncionarioController;
+import br.com.vieira.gestaofuncionarios.controller.UsuarioController;
+
 /**
  *
  * @author Eduardo
  */
 public class ListaFuncionarios extends javax.swing.JFrame {
 
+    private final FuncionarioController funcionarioController;
+    private final UsuarioController usuarioController;
+
     /**
      * Creates new form ListaFuncionarios
      */
-    public ListaFuncionarios() {
+    public ListaFuncionarios(FuncionarioController funcionarioController,
+            UsuarioController usuarioController) {
+        this.funcionarioController = funcionarioController;
+        this.usuarioController = usuarioController;
         initComponents();
+        setLocationRelativeTo(null);
     }
 
     /**
@@ -84,11 +94,11 @@ public class ListaFuncionarios extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCadastrarPessoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarPessoaActionPerformed
-        new CadastroPessoa().setVisible(true);
+        new CadastroPessoa(usuarioController).setVisible(true);
     }//GEN-LAST:event_btnCadastrarPessoaActionPerformed
 
     private void btnCadastrarFuncionarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarFuncionarioActionPerformed
-        new CadastroFuncionario().setVisible(true);
+        new CadastroFuncionario(funcionarioController).setVisible(true);
     }//GEN-LAST:event_btnCadastrarFuncionarioActionPerformed
     private void carregarFuncionarios() {
 

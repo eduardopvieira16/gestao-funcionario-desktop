@@ -4,17 +4,23 @@
  */
 package br.com.vieira.gestaofuncionarios.view;
 
+import br.com.vieira.gestaofuncionarios.controller.FuncionarioController;
+
 /**
  *
  * @author Eduardo
  */
 public class CadastroFuncionario extends javax.swing.JFrame {
 
+    private final FuncionarioController funcionarioController;
+
     /**
      * Creates new form CadastroFuncionario
      */
-    public CadastroFuncionario() {
+    public CadastroFuncionario(FuncionarioController funcionarioController) {
+        this.funcionarioController = funcionarioController;
         initComponents();
+        setLocationRelativeTo(null);
     }
 
     /**
