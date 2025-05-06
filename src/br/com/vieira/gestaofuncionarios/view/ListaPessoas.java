@@ -6,6 +6,8 @@ package br.com.vieira.gestaofuncionarios.view;
 
 import br.com.vieira.gestaofuncionarios.controller.FuncionarioController;
 import br.com.vieira.gestaofuncionarios.controller.UsuarioController;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -13,17 +15,22 @@ import br.com.vieira.gestaofuncionarios.controller.UsuarioController;
  */
 public class ListaPessoas extends javax.swing.JFrame {
 
-    private UsuarioController usuarioContoller;
-    private FuncionarioController funcionarioController;
+    private final FuncionarioController funcionarioController;
+    private final UsuarioController usuarioController;
 
     /**
      * Creates new form ListaFuncionarios
      */
-    public ListaPessoas(UsuarioController usuarioController, FuncionarioController funcionarioController) {
-        this.usuarioContoller = usuarioController;
+    public ListaPessoas(FuncionarioController funcionarioController, UsuarioController usuarioController) {
         this.funcionarioController = funcionarioController;
+        this.usuarioController = usuarioController;
         initComponents();
         setLocationRelativeTo(null);
+        //carregarPessoas();
+    }
+
+    private ListaPessoas() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     /**
@@ -91,7 +98,8 @@ public class ListaPessoas extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnListarFuncionarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListarFuncionarioActionPerformed
-        // TODO add your handling code here:
+        new ListaFuncionarios(funcionarioController, usuarioController).setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_btnListarFuncionarioActionPerformed
 
     private void btnCadastrarFuncionarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarFuncionarioActionPerformed
@@ -141,4 +149,5 @@ public class ListaPessoas extends javax.swing.JFrame {
     private javax.swing.JTable jTable1;
     private static javax.swing.JLabel lblTitleLogin;
     // End of variables declaration//GEN-END:variables
+
 }
