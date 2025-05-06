@@ -5,14 +5,19 @@
 package br.com.vieira.gestaofuncionarios.view;
 
 import br.com.vieira.gestaofuncionarios.controller.FuncionarioController;
+import java.math.BigDecimal;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author Eduardo
  */
 public class CadastroFuncionario extends javax.swing.JFrame {
-
+    
     private final FuncionarioController funcionarioController;
+    private final DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
     /**
      * Creates new form CadastroFuncionario
@@ -21,6 +26,10 @@ public class CadastroFuncionario extends javax.swing.JFrame {
         this.funcionarioController = funcionarioController;
         initComponents();
         setLocationRelativeTo(null);
+    }
+    
+    private CadastroFuncionario() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     /**
@@ -97,11 +106,23 @@ public class CadastroFuncionario extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
-        // TODO add your handling code here:
+        this.dispose();
     }//GEN-LAST:event_btnCancelarActionPerformed
 
     private void btnCadastrar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrar1ActionPerformed
-        // TODO add your handling code here:
+        try {
+            funcionarioController.cadastrarFuncionario(
+                    txtNomeCompleto1.getText().trim(),
+                    "",
+                    LocalDate.parse(txtDtAdmissao.getText(), dateFormatter),
+                    new BigDecimal(txtSalario.getText()),
+                    "ATIVO"
+            );
+            JOptionPane.showMessageDialog(this, "Funcionário cadastrado!");
+            this.dispose();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Erro: " + e.getMessage());
+        }
     }//GEN-LAST:event_btnCadastrar1ActionPerformed
 
     /**
