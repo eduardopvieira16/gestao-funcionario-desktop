@@ -5,6 +5,7 @@
 package br.com.vieira.gestaofuncionarios.view;
 
 import br.com.vieira.gestaofuncionarios.controller.UsuarioController;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -13,7 +14,7 @@ import br.com.vieira.gestaofuncionarios.controller.UsuarioController;
 public class CadastroPessoa extends javax.swing.JFrame {
 
     private final UsuarioController usuarioController;
-    
+
     /**
      * Creates new form CadastroPessoa
      */
@@ -21,6 +22,10 @@ public class CadastroPessoa extends javax.swing.JFrame {
         this.usuarioController = usuarioController;
         initComponents();
         setLocationRelativeTo(null);
+    }
+
+    private CadastroPessoa() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     /**
@@ -98,11 +103,21 @@ public class CadastroPessoa extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
-        // TODO add your handling code here:
+        this.dispose();
     }//GEN-LAST:event_btnCancelarActionPerformed
 
     private void btnCadastrar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrar1ActionPerformed
-        // TODO add your handling code here:
+        try {
+            usuarioController.cadastrarUsuario(
+                    txtNomeCompleto.getText().trim(),
+                    txtEmail.getText().trim(),
+                    new String(txtSenha.getPassword())
+            );
+            JOptionPane.showMessageDialog(this, "Cadastro realizado!");
+            this.dispose();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Erro: " + e.getMessage());
+        }
     }//GEN-LAST:event_btnCadastrar1ActionPerformed
 
     /**
